@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>上传</title>
+<link th:href="@{/css/comm.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<a th:href="@{/}">返回首页</a>
+	<hr/>
+	<form th:action="@{/tie/upload}" method="post" enctype="multipart/form-data">
+		<input type="file" name="tie" id="tie" placeholder="请选择上传文件" />
+		<input type="submit" value="上传"/>
+		<span th:text="${message}" class="error"></span>
+	</form>
+</body>
+</html>

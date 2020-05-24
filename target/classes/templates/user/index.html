@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>首页</title>
+</head>
+<body>
+<div th:if="${session.user==null}">
+	<a th:href="@{/user/login}">请登录</a>
+	<a th:href="@{/user/reg}">会员注册</a>
+</div>
+<div th:unless="${session.user==null}">
+		 <span th:text="'欢迎你'+${session.user.uname}"></span>
+		 <img id="img_photo" th:src="@{/user/photo}" style="width: 40px;height: 40px"/>
+		<a th:href="@{/tie/upload}">上传</a>
+		<a th:href="@{/user/lagout}">注销</a>
+</div>
+<hr/>
+<p th:if="${pager.totalElements==0}">暂无任何下载资源</p>
+		<table th:unlees="${totalElementst==0}" border="1">
+		    <tr>
+				<th>名称</th>
+				<th>大小</th>
+				<th>类型</th>
+				<th>发布人</th>
+				<th>发布时间</th>
+				<th>操作</th>
+		  </tr>
+		 	<tr th:each="item:${pager.content}">
+				<td th:text="${item.tname}"></td>
+				<td th:text="${item.tsize}/1024+'KB'"></td>
+				<td th:text="${item.ttype}"></td>
+				<td th:text="${item.user.uname}"></td>
+				<td th:text="${item.tdate}"></td>
+				<td>
+					<a th:href="@{/tie/download/{id}(id=${item.tid})}">下载</a>
+				</td>
+			</tr>
+		 	<td colspan="3">
+					<a th:href="@{/user/list/{page}/{size}(page=0,size=10)}">首页</a>
+					<a th:unless="${pager.first}" th:href="@{/user/list/{page}/{size}(page=${pager.number-1},size=10)}">前页</a>
+					<a th:unless="${pager.last}" th:href="@{/user/list/{page}/{size}(page=${pager.number+1},size=10)}">后页</a>
+					<a th:href="@{/user/list/{page}/{size}(page=${pager.totalPages-1},size=10)}">末页</a>
+				</td>
+		 	
+		 
+		 
+		</table>
+
+</body>
+</html>

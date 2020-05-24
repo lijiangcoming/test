@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+		
+		<h1 th:text="${hello}">hello Springboot</h1>
+		<hr/>
+		<p th:if="${op &gt; 0}">ling</p>
+		<p th:if="${op &lt; 1}">1</p>
+s		
+		<hr/>
+		<select>
+		  <option th:each="num:${num}" th:value="${num}" th:text="${num}+'行'"></option>
+		</select>
+		<a th:href="@{/my/login}">登录</a>
+		<hr/>
+		
+</body>
+</html>

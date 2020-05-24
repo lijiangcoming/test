@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>注册</title>
+</head>
+<body>
+		<form th:action="@{/user/reg}" method="post" enctype="multipart/form-data">
+	<table>
+		<tr>
+			<td style="text-align: right;">用户名：</td>
+			<td><input type="text" id="uname" name="uname" /></td>
+			<td><span id="span_uname" class="error"></span></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">密码：</td>
+			<td><input type="password" id="upwd" name="upwd" /></td>
+			<td><span id="span_upwd" class="error"></span></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">密码确认：</td>
+			<td><input type="password" id="apwd" name="apwd" /></td>
+			<td><span id="span_apwd" class="error"></span></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">头像：</td>
+			<td><input type="file" id="photo" name="photo" accept="image/bmp,image/png,image/jpg,image/jpeg"/></td>
+			<td><span id="span_photo" class="error"></span></td>
+		</tr>
+		<tr>
+			<td style="text-align: right;">&nbsp;</td>
+			<td>
+				<input type="submit" value="注册"/>
+				<span th:text="${message}" class="error"></span>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	</form>
+
+</body>
+</html>
